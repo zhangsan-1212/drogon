@@ -576,7 +576,10 @@ void HttpServer::requestPassMiddlewares(const HttpRequestImplPtr &req,
 template <typename Pack>
 void HttpServer::requestPreHandling(const HttpRequestImplPtr &req, Pack &&pack)
 {
-    if (req->method() == Options)
+    // Handle CORS preflight request, except when custom handling is desired
+    if ((req->method() == Options) &&
+        (!req->attributes()->find("customCORShandling") ||
+        !req->attributes()->get<bool>("customCORShandling")))
     {
         handleHttpOptions(req,
                           *pack.binderPtr->corsMethods_,
