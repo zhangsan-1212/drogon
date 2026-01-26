@@ -4,10 +4,41 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.9.12] - 2026-01-26
+
+### API changes list
+
+- Implement when_all coroutine gate.
 
 ### Changed
 
-- Add toString method to all models
+- Models: add toString method.
+
+- changing std::strlen to a string comparison consistent with multibyte chars on model generation templates.
+
+- Enhance error handling in CacheFile methods.
+
+- Mysql exception forward errorNo to SqlError.
+
+- Support unsigned integer types in MySQL ORM.
+
+### Fixed
+
+- Fix errors after database connection interruption.
+
+- Use redisFreeCommand instead of free() function.
+
+- Fix the missing openssl dependency in FindMysql.
+
+- Fix warnings - for range loop no copies, unsigned int always >= 0.
+
+- Fix cross compiling.
+
+- Fix linker errors on mingw64.
+
+- Fix SQL syntax error when UPDATE has no fields to update.
+
+- Fix unused variable warnings.
 
 ## [1.9.11] - 2025-06-20
 
@@ -1847,7 +1878,9 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.0-beta1] - 2019-06-11
 
-[Unreleased]: https://github.com/an-tao/drogon/compare/v1.9.11...HEAD
+[Unreleased]: https://github.com/an-tao/drogon/compare/v1.9.12...HEAD
+
+[1.9.12]: https://github.com/an-tao/drogon/compare/v1.9.11...v1.9.12
 
 [1.9.11]: https://github.com/an-tao/drogon/compare/v1.9.10...v1.9.11
 
